@@ -6,6 +6,7 @@
   "aws": {
     "allowed_regions": [],
     "allowed_services": [],
+    "custom_scp": "",
     "environments": { "prod": {} }
   },
   "communication": {

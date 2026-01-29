@@ -1,5 +1,6 @@
 #
 # Region restrictions
+# (would be similar for service restrictions)
 #
 locals {
   unique_region_restrictions = distinct([for project in local.projects : sort(project.aws.allowed_regions)])
@@ -19,4 +20,16 @@ resource "aws_organizations_policy_attachment" "scp_restrict_regions_attachment"
 
   policy_id = aws_organizations_policy.scp_restrict_regions[each.value].id
   target_id = module.ous.by_name_path[each.key].id
+}
+
+#
+# Custom SCPs
+#
+resource "aws_organizations_policy" "scp_custom" {
+  for_each = toset(compact(distinct(values(local.projects)[*].aws.custom_scp)))
+
+  name        = "CustomSCP-${each.value}"
+  description = ""
+  type        = "SERVICE_CONTROL_POLICY"
+  content     = file("${path.module}/data/templates/scp/${each.value}")
 }
