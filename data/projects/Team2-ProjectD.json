@@ -1,0 +1,15 @@
+{
+  "owner": "Team2-a",
+  "github": {
+    "repositories": []
+  },
+  "aws": {
+    "allowed_regions": [],
+    "allowed_services": [],
+    "environments": {}
+  },
+  "communication": {
+    "alertSlackChannels": [],
+    "alertsEmailAddress": []
+  }
+}
