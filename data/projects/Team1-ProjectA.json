@@ -7,21 +7,21 @@
     "controls": {
       "allowed_regions": [],
       "allowed_services": [],
-      "custom_scp": ""
+      "custom_scps": []
     },
     "environments": {
       "prod": {
         "controls": {
           "allowed_regions": [],
           "allowed_services": [],
-          "custom_scp": ""
+          "custom_scps": []
         }
       },
       "nonprod": {
         "controls": {
           "allowed_regions": [],
           "allowed_services": [],
-          "custom_scp": ""
+          "custom_scps": []
         }
       }
     }

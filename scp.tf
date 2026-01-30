@@ -9,7 +9,7 @@ resource "aws_organizations_policy" "scp_restrict_regions" {
   name        = "RestrictRegions-${each.key}"
   description = "Restrict AWS Regions to: ${each.key}"
   type        = "SERVICE_CONTROL_POLICY"
-  content     = jsonencode({})
+  content     = jsonencode({ "Version" : "2012-10-17", "Statement" : [{ "Effect" : "Allow", "Action" : "*", "Resource" : "*" }] })
 }
 
 resource "aws_organizations_policy_attachment" "scp_restrict_regions_attachment" {
@@ -18,4 +18,31 @@ resource "aws_organizations_policy_attachment" "scp_restrict_regions_attachment"
 
   policy_id = aws_organizations_policy.scp_restrict_regions[each.value].id
   target_id = module.ous.by_name_path[each.key].id
+}
+
+#
+# Custom SCPs
+#
+resource "aws_organizations_policy" "scp_custom" {
+  for_each = toset(distinct(flatten([for ou in local.ous_with_project_data : [for file in try(ou.controls.custom_scps, []) : file]])))
+
+  name        = each.key
+  description = "Custom SCP: ${each.key}"
+  type        = "SERVICE_CONTROL_POLICY"
+  content     = jsonencode(jsondecode(file("${path.module}/data/templates/scp/${each.value}")))
+}
+
+resource "aws_organizations_policy_attachment" "scp_custom" {
+  # "Managed OUs/Projects/Team1-ProjectA/Prod -> scp1.json" => { ou_id: "o-r123-1234567", scp: "scp1.json" }
+  for_each = { for item in flatten([
+    for k, ou in local.ous_with_project_data : [
+      for file in try(ou.controls.custom_scps, []) : {
+        key   = "${k} -> ${file}"
+        value = { ou_id : ou.id, scp : file }
+      }
+    ]
+  ]) : item.key => item.value }
+
+  policy_id = aws_organizations_policy.scp_custom[each.value.scp].id
+  target_id = each.value.ou_id
 }

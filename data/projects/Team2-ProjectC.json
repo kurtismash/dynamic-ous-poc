@@ -7,7 +7,7 @@
     "controls": {
       "allowed_regions": ["us-east-1", "eu-west-1"],
       "allowed_services": [],
-      "custom_scp": ""
+      "custom_scps": []
     },
     "environments": []
   },

@@ -7,15 +7,14 @@
     "controls": {
       "allowed_regions": [],
       "allowed_services": [],
-      "custom_scp": ""
+      "custom_scps": []
     },
     "environments": {
       "prod": {
-        "HELLO": "WORLD",
         "controls": {
           "allowed_regions": ["us-west-2"],
           "allowed_services": [],
-          "custom_scp": ""
+          "custom_scps": ["scp1.json"]
         }
       }
     }
