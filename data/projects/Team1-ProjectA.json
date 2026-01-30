@@ -4,12 +4,26 @@
     "repositories": []
   },
   "aws": {
-    "allowed_regions": [],
-    "allowed_services": [],
-    "custom_scp": "",
+    "controls": {
+      "allowed_regions": [],
+      "allowed_services": [],
+      "custom_scp": ""
+    },
     "environments": {
-      "prod": {},
-      "nonprod": {}
+      "prod": {
+        "controls": {
+          "allowed_regions": [],
+          "allowed_services": [],
+          "custom_scp": ""
+        }
+      },
+      "nonprod": {
+        "controls": {
+          "allowed_regions": [],
+          "allowed_services": [],
+          "custom_scp": ""
+        }
+      }
     }
   },
   "communication": {

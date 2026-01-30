@@ -4,10 +4,21 @@
     "repositories": []
   },
   "aws": {
-    "allowed_regions": [],
-    "allowed_services": [],
-    "custom_scp": "",
-    "environments": { "prod": {} }
+    "controls": {
+      "allowed_regions": [],
+      "allowed_services": [],
+      "custom_scp": ""
+    },
+    "environments": {
+      "prod": {
+        "HELLO": "WORLD",
+        "controls": {
+          "allowed_regions": ["us-west-2"],
+          "allowed_services": [],
+          "custom_scp": ""
+        }
+      }
+    }
   },
   "communication": {
     "alertSlackChannels": [],

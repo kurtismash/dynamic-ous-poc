@@ -4,9 +4,11 @@
     "repositories": []
   },
   "aws": {
-    "allowed_regions": ["eu-west-2"],
-    "allowed_services": [],
-    "custom_scp": "",
+    "controls": {
+      "allowed_regions": ["eu-west-2"],
+      "allowed_services": [],
+      "custom_scp": ""
+    },
     "environments": {}
   },
   "communication": {

@@ -4,9 +4,11 @@
     "repositories": []
   },
   "aws": {
-    "allowed_regions": [],
-    "allowed_services": [],
-    "custom_scp": "scp1.json",
+    "controls": {
+      "allowed_regions": [],
+      "allowed_services": [],
+      "custom_scp": "scp1.json"
+    },
     "environments": []
   },
   "communication": {

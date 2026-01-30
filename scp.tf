@@ -2,12 +2,9 @@
 # Region restrictions
 # (would be similar for service restrictions)
 #
-locals {
-  unique_region_restrictions = distinct([for project in local.projects : sort(project.aws.allowed_regions)])
-}
-
 resource "aws_organizations_policy" "scp_restrict_regions" {
-  for_each = { for region_list in local.unique_region_restrictions : join(",", region_list) => region_list if length(region_list) > 0 }
+  # "eu-west-1,eu-west-2" => ["eu-west-1", "eu-west-2"]
+  for_each = { for region_list in distinct([for ou in local.ous_with_project_data : sort(lookup(ou.controls, "allowed_regions", []))]) : join(",", region_list) => region_list if length(region_list) > 0 }
 
   name        = "RestrictRegions-${each.key}"
   description = "Restrict AWS Regions to: ${each.key}"
@@ -16,20 +13,9 @@ resource "aws_organizations_policy" "scp_restrict_regions" {
 }
 
 resource "aws_organizations_policy_attachment" "scp_restrict_regions_attachment" {
-  for_each = { for k, v in local.projects : "${local.projects_parent_ou_string}/${k}" => join(",", sort(v.aws.allowed_regions)) if length(v.aws.allowed_regions) > 0 }
+  # "Managed OUs/Projects/Team1-ProjectA/Prod" => "eu-west-1,eu-west-2"
+  for_each = { for k, ou in local.ous_with_project_data : k => join(",", sort(ou.controls.allowed_regions)) if try(length(ou.controls.allowed_regions), 0) > 0 }
 
   policy_id = aws_organizations_policy.scp_restrict_regions[each.value].id
   target_id = module.ous.by_name_path[each.key].id
-}
-
-#
-# Custom SCPs
-#
-resource "aws_organizations_policy" "scp_custom" {
-  for_each = toset(compact(distinct(values(local.projects)[*].aws.custom_scp)))
-
-  name        = "CustomSCP-${each.value}"
-  description = ""
-  type        = "SERVICE_CONTROL_POLICY"
-  content     = file("${path.module}/data/templates/scp/${each.value}")
 }
