@@ -5,8 +5,8 @@
   },
   "aws": {
     "controls": {
-      "allowed_regions": ["eu-west-1", "eu-west-2"],
-      "allowed_services": [],
+      "allow_regions": ["eu-west-1", "eu-west-2"],
+      "allow_services": [],
       "custom_scps": []
     },
     "environments": []

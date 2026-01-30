@@ -5,22 +5,22 @@
   },
   "aws": {
     "controls": {
-      "allowed_regions": [],
-      "allowed_services": [],
+      "allow_regions": [],
+      "allow_services": [],
       "custom_scps": []
     },
     "environments": {
       "prod": {
         "controls": {
-          "allowed_regions": [],
-          "allowed_services": [],
+          "allow_regions": [],
+          "allow_services": [],
           "custom_scps": []
         }
       },
       "nonprod": {
         "controls": {
-          "allowed_regions": [],
-          "allowed_services": [],
+          "allow_regions": [],
+          "allow_services": [],
           "custom_scps": []
         }
       }

@@ -5,8 +5,8 @@
   },
   "aws": {
     "controls": {
-      "allowed_regions": [],
-      "allowed_services": [],
+      "allow_regions": [],
+      "allow_services": [],
       "custom_scps": ["scp1.json", "scp2.json"]
     },
     "environments": []
