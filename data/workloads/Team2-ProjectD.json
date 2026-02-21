@@ -1,0 +1,21 @@
+{
+  "owner": "Team2-a",
+  "github": {
+    "repositories": []
+  },
+  "aws": {
+    "expected_monthly_spend_usd": 100,
+    "policies": {
+      "scp": {
+        "allow_regions": [],
+        "allow_actions": ["iam:*", "cloudtrail:*"],
+        "custom": []
+      }
+    },
+    "environments": {}
+  },
+  "communication": {
+    "alert_slack_channels": [],
+    "alertsEmailAddresses": []
+  }
+}

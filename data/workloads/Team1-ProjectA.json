@@ -1,0 +1,40 @@
+{
+  "owner": "Team1",
+  "github": {
+    "repositories": []
+  },
+  "aws": {
+    "expected_monthly_spend_usd": 100,
+    "policies": {
+      "scp": {
+        "allow_regions": [],
+        "allow_actions": [],
+        "custom": []
+      }
+    },
+    "environments": {
+      "prod": {
+        "policies": {
+          "scp": {
+            "allow_regions": [],
+            "allow_actions": [],
+            "custom": []
+          }
+        }
+      },
+      "nonprod": {
+        "policies": {
+          "scp": {
+            "allow_regions": [],
+            "allow_actions": [],
+            "custom": []
+          }
+        }
+      }
+    }
+  },
+  "communication": {
+    "alert_slack_channels": ["hello-world"],
+    "alertsEmailAddresses": ["team1@example.com"]
+  }
+}

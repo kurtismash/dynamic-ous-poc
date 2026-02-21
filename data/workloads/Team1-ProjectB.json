@@ -1,0 +1,31 @@
+{
+  "owner": "Team1",
+  "github": {
+    "repositories": []
+  },
+  "aws": {
+    "expected_monthly_spend_usd": 0,
+    "policies": {
+      "scp": {
+        "allow_regions": [],
+        "allow_actions": [],
+        "custom": []
+      }
+    },
+    "environments": {
+      "prod": {
+        "policies": {
+          "scp": {
+            "allow_regions": ["us-west-2"],
+            "allow_actions": [],
+            "custom": ["scp1.json"]
+          }
+        }
+      }
+    }
+  },
+  "communication": {
+    "alert_slack_channels": [],
+    "alertsEmailAddresses": []
+  }
+}

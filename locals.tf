@@ -1,7 +1,7 @@
 locals {
-  projects = {
-    for file in fileset("${path.module}/data/projects", "*.json") : trimsuffix(file, ".json") => merge(
-      jsondecode(file("${path.module}/data/projects/${file}"))
+  workloads_data = {
+    for file in fileset("${path.module}/data/workloads", "*.json") : trimsuffix(file, ".json") => merge(
+      jsondecode(file("${path.module}/data/workloads/${file}"))
     )
   }
 }

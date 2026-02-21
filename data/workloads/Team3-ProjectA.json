@@ -1,0 +1,45 @@
+{
+  "owner": "Team3",
+  "github": {
+    "repositories": []
+  },
+  "aws": {
+    "expected_monthly_spend_usd": 0,
+    "policies": {
+      "scp": {
+        "allow_regions": ["eu-west-2"],
+        "allow_actions": [
+          "acm:*",
+          "apigateway:*",
+          "cloudformation:*",
+          "cloudfront:*",
+          "cloudtrail:LookupEvents",
+          "cloudwatch:*",
+          "codeconnections:*",
+          "codestar-connections:*",
+          "ecr:*",
+          "events:*",
+          "iam:*",
+          "kms:*",
+          "lambda:*",
+          "logs:*",
+          "route53:*",
+          "s3:*",
+          "secretsmanager:*",
+          "shield:*",
+          "signin:*",
+          "ssm:*",
+          "sts:*",
+          "waf:*",
+          "wafv2:*"
+        ],
+        "custom": []
+      }
+    },
+    "environments": {}
+  },
+  "communication": {
+    "alert_slack_channels": [],
+    "alertsEmailAddresses": []
+  }
+}
