@@ -49,7 +49,7 @@ resource "aws_organizations_policy" "scp_custom" {
   name        = each.key
   description = "Custom SCP: ${each.key}"
   type        = "SERVICE_CONTROL_POLICY"
-  content     = jsonencode(jsondecode(file("${path.module}/data/templates/organizations/scp/${each.value}")))
+  content     = jsonencode(jsondecode(file("${path.module}/data/custom-policies/scp/${each.value}")))
 }
 
 resource "aws_organizations_policy_attachment" "scp_custom" {
